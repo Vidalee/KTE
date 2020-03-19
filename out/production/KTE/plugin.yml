@@ -2,5 +2,5 @@ name: KTE
 version: 1.0
 author: Vivi
 main: re.vivide.kte.KTE
-api-version: 1.15.2
+api-version: 1.15
 website: http://github.com/Vidalee/KTE
