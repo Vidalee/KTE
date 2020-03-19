@@ -21,7 +21,6 @@ public class Timer {
 
             @Override
             public void run() {
-                System.out.println("a");
                 if(KTE.game.active){
                     seconds++;
                     if(seconds == 60){
@@ -32,12 +31,13 @@ public class Timer {
                         minutes = 0;
                         hours++;
                     }
-                    if(last != ""){
+
+                    if(last != "")
                         obj.getScoreboard().resetScores(last);
-                        String temp = "Temps : " + ChatColor.RED + hours + ":" + minutes + ":" + seconds;
-                        obj.getScore(temp).setScore(9);
-                        last = temp;
-                    }
+                    String temp = "Temps : " + ChatColor.RED + hours + ":" + minutes + ":" + seconds;
+                    obj.getScore(temp).setScore(9);
+                    last = temp;
+
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
