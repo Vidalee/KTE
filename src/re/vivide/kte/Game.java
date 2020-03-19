@@ -24,8 +24,7 @@ public class Game {
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
         obj.setDisplayName(ChatColor.DARK_PURPLE + "Kill The EALD 2");
         obj.getScore(" ").setScore(10);
-        Timer timer = new Timer(obj);
-        timer.start();
+        Timer timer = new Timer(obj, instance);
     }
 
     public void addPlayer(Player p){
