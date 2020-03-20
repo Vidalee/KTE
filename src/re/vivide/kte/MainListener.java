@@ -46,6 +46,7 @@ public class MainListener implements Listener{
                 && p.getVehicle() == null){
 
             Snowball snowball = p.getWorld().spawn(b.getLocation().add(0.5D, -0.5D, 0.5D), Snowball.class);
+            snowball.setInvulnerable(true);
             snowball.addPassenger(p);
         }
     }
