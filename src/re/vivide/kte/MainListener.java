@@ -1,11 +1,9 @@
 package re.vivide.kte;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -38,11 +36,17 @@ public class MainListener implements Listener{
 
     @EventHandler
     public void onInteractEvent(PlayerInteractEvent event){
+
         Player p = event.getPlayer();
         Block b = event.getClickedBlock();
-        if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && event.getClickedBlock().getType() == Material.PINK_CARPET){
-            Arrow arrow = p.getWorld().spawn(b.getLocation().add(0.5D, 0.2D, 0.5D), Arrow.class);
-            arrow.addPassenger(p);
+
+        if(event.getAction() == Action.RIGHT_CLICK_BLOCK
+                && event.getClickedBlock().getType() == Material.PINK_CARPET
+                && event.getItem().getType() == Material.AIR
+                && p.getVehicle() == null){
+
+            Snowball snowball = p.getWorld().spawn(b.getLocation().add(0.5D, -0.5D, 0.5D), Snowball.class);
+            snowball.addPassenger(p);
         }
     }
 
@@ -50,7 +54,7 @@ public class MainListener implements Listener{
     public void onEntityDismountEvent(EntityDismountEvent event){
         Entity entity = event.getEntity();
         Entity dismounted = event.getDismounted();
-        if(entity.getType().equals(EntityType.PLAYER) && dismounted.getType().equals(EntityType.ARROW)) {
+        if(entity.getType().equals(EntityType.PLAYER) && dismounted.getType().equals(EntityType.SNOWBALL)) {
             dismounted.remove();
         }
     }
