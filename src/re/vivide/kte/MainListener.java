@@ -45,9 +45,13 @@ public class MainListener implements Listener{
                 && event.getItem() == null
                 && p.getVehicle() == null){
 
-            Snowball snowball = p.getWorld().spawn(b.getLocation().add(0.5D, -0.5D, 0.5D), Snowball.class);
-            snowball.setInvulnerable(true);
-            snowball.addPassenger(p);
+            Bat bat = p.getWorld().spawn(b.getLocation().add(0.5D, -0.5D, 0.5D), Bat.class);
+            bat.setInvulnerable(true);
+            bat.setSilent(true);
+            bat.setAI(false);
+            bat.setGravity(false);
+            
+            bat.addPassenger(p);
         }
     }
 
@@ -55,7 +59,7 @@ public class MainListener implements Listener{
     public void onEntityDismountEvent(EntityDismountEvent event){
         Entity entity = event.getEntity();
         Entity dismounted = event.getDismounted();
-        if(entity.getType().equals(EntityType.PLAYER) && dismounted.getType().equals(EntityType.SNOWBALL)) {
+        if(entity.getType().equals(EntityType.PLAYER) && dismounted.getType().equals(EntityType.BAT)) {
             dismounted.remove();
         }
     }
