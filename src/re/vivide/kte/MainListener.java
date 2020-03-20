@@ -42,7 +42,7 @@ public class MainListener implements Listener{
 
         if(event.getAction() == Action.RIGHT_CLICK_BLOCK
                 && event.getClickedBlock().getType() == Material.PINK_CARPET
-                && event.getItem().getType() == Material.AIR
+                && event.getItem() == null
                 && p.getVehicle() == null){
 
             Snowball snowball = p.getWorld().spawn(b.getLocation().add(0.5D, -0.5D, 0.5D), Snowball.class);
